@@ -13,4 +13,3 @@ server <- function(input, output, session){}
 
 # Preview the UI in the console
 shinyApp(ui = ui, server = server)
-
