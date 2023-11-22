@@ -4,7 +4,7 @@ library(shinydashboard)
 library(ggplot2)
 
 # Define UI
-ui <- navbarPage(
+ui_def <- navbarPage(
   title = "Training Dashboard",
   
   tabPanel("Home", icon = icon("home"),
@@ -66,20 +66,22 @@ ui <- navbarPage(
            column(width = 4,
                   plotOutput("bargraph1"),
                   
+                  plotOutput("bargraph2")
+                  
            )
   )
 )
 
 # server
-server <- function(input, output, session){
+server_def <- function(input, output, session){
   
   
   # create a basic data frame
   demos_data <- reactiveValues(demo_data = tibble::tibble(Name = character(),
-                                                           Age = numeric(),
-                                                           Sex = character(),
-                                                           Education = character(),
-                                                           About = character()
+                                                          Age = numeric(),
+                                                          Sex = character(),
+                                                          Education = character(),
+                                                          About = character()
                                                           )
                                )
   
@@ -133,8 +135,8 @@ server <- function(input, output, session){
     
     bar_graph1
   })
-  
+
 }
 
 # Preview the UI in the console
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui_def, server = server_def)
